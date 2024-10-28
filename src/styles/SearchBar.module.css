@@ -1,0 +1,31 @@
+.searchBar {
+  background-color: #1f1f1f;
+  border-radius: 30px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 500px;
+}
+
+.searchBar:hover {
+  background-color: #292929;
+}
+
+.searchInput {
+  color: #aeaeae;
+  background-color: transparent;
+  padding: 5px;
+  font-size: 18px;
+  border: none;
+  width: 100%;
+}
+
+.searchInput:focus {
+  outline: none;
+  border: none;
+}
+
+.searchIcon {
+  cursor: pointer;
+}
