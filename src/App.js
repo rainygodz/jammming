@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SearchBar from './components/SearchBar';
+import SearchResults from './components/SearchResults';
 import './App.css';
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
         <h1 className="logo">Jammming</h1>
       </header>
       <SearchBar handleInput={handleInput} value={search}/>
-      <p>{search}</p>
+      <div>{search}</div>
+      <SearchResults />
     </div>
   );
 }
