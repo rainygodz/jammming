@@ -1,0 +1,4 @@
+.trackRow {
+  display: grid;
+  grid-template-columns: 20px 3fr 2fr 50px;
+}

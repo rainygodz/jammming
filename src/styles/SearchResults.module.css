@@ -8,8 +8,12 @@
 }
 
 .headerRow {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #6b6b6b6e;
-  padding: 5px 15px;
+  display: grid;
+  grid-template-columns: 20px 3fr 2fr 50px;
+  border-bottom: 1px solid #444444cb;
+}
+
+.trackRow {
+  display: grid;
+  grid-template-columns: 20px 3fr 2fr 50px;
 }

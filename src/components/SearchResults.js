@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../styles/SearchResults.module.css';
+import Track from './Track';
 
 
 const SearchResults = () => {
@@ -15,6 +16,11 @@ const SearchResults = () => {
           </svg>
         </div>
       </div>
+      <Track
+      id="1" 
+      track="YSM PC" 
+      album="YSM PC" 
+      duration="2:19" />
     </div>
   );
 };
