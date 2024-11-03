@@ -18,7 +18,23 @@ const SearchResults = () => {
       </div>
       <Track
       id="1" 
+      albumCover="../assets/images/albmcvr.png" 
       track="YSM PC" 
+      artist="OBLADAET, YASMI" 
+      album="YSM PC" 
+      duration="2:19" />
+
+<Track
+      id="1" 
+      track="YSM PC" 
+      artist="OBLADAET, YASMI" 
+      album="YSM PC" 
+      duration="2:19" />
+
+<Track
+      id="1" 
+      track="YSM PC" 
+      artist="OBLADAET, YASMI" 
       album="YSM PC" 
       duration="2:19" />
     </div>
