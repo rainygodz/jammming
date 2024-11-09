@@ -9,13 +9,14 @@ import Playlist from './components/Playlist';
 function App() {
   const [ search, setSearch ] = useState('');
   const [ playlistVisibility, setPlaylistVisibility ] = useState(false);
-
-  const handlePlaylistVisibility = () => {
-    setPlaylistVisibility(!playlistVisibility);
-  }
+  const [ playlistName, setPlaylistName ] = useState('');
 
   const handleInput = (e) => {
     setSearch(e.target.value);
+  };
+
+  const handlePlaylistName = (e) => {
+    setPlaylistName(e.target.value);
   };
 
   return (
@@ -26,8 +27,10 @@ function App() {
       <SearchBar handleInput={handleInput} value={search}/>
       <div>{search}</div>
       <SearchResults />
-      <OpenPlaylistBtn handlePlaylistVisibility={handlePlaylistVisibility} />
-      {/* <Playlist playlistVisibility={playlistVisibility} /> */}
+      <OpenPlaylistBtn onClick={() => setPlaylistVisibility(true)} />
+      {playlistVisibility && (
+      <Playlist onClose={() => setPlaylistVisibility(false)} handleInput={handlePlaylistName} value={playlistName} />
+      )}
     </div>
   );
 }
