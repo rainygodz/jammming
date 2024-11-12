@@ -3,28 +3,26 @@ import Track from './Track';
 import styles from '../styles/Playlist.module.css';
 import Tracklist from './Tracklist';
 
-const Playlist = ({ onClose, value, handleInput }) => {
+const Playlist = ({ onClose, value, handleInput, tracks }) => {
+
+  const trackItems = tracks.map((track, index) => {
+    return <Track 
+              num={index + 1} 
+              albumCover={track.albumCover} 
+              track={track.track} 
+              artist={track.artist} 
+              album={track.album} 
+              duration={track.duration} 
+              id={track.id} />;
+  });
+
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <input type='text' placeholder='My playlist' value={value} onChange={handleInput} className={styles.playlistName} />
         
         <Tracklist>
-          <Track
-            id="1" 
-            albumCover="../assets/images/albmcvr.png" 
-            track="YSM PC" 
-            artist="OBLADAET, YASMI" 
-            album="YSM PC" 
-            duration="2:19" />
-
-          <Track
-            id="1" 
-            albumCover="../assets/images/albmcvr.png" 
-            track="YSM PC" 
-            artist="OBLADAET, YASMI" 
-            album="YSM PC" 
-            duration="2:19" />
+          {trackItems}
         </Tracklist>
         <button className={styles.saveBtn}>Save to Spotify</button>
         <button className={styles.closeButton} onClick={onClose}>X</button>

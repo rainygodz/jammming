@@ -3,30 +3,21 @@ import Track from './Track';
 import Tracklist from './Tracklist';
 
 
-const SearchResults = () => {
+const SearchResults = ({ searchResults }) => {
+  const trackItems = searchResults.map((track, index) => {
+    return <Track 
+              num={index + 1} 
+              albumCover={track.albumCover} 
+              track={track.track} 
+              artist={track.artist} 
+              album={track.album} 
+              duration={track.duration} 
+              id={track.id} />;
+  });
+
   return (
     <Tracklist>
-      <Track
-        id="1" 
-        albumCover="../assets/images/albmcvr.png" 
-        track="YSM PC" 
-        artist="OBLADAET, YASMI" 
-        album="YSM PC" 
-        duration="2:19" />
-
-      <Track
-        id="1" 
-        track="YSM PC" 
-        artist="OBLADAET, YASMI" 
-        album="YSM PC" 
-        duration="2:19" />
-
-      <Track
-        id="1" 
-        track="YSM PC" 
-        artist="OBLADAET, YASMI" 
-        album="YSM PC" 
-        duration="2:19" />
+      {trackItems}
     </Tracklist>
   );
 };
