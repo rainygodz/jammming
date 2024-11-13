@@ -1,6 +1,6 @@
 .trackRow {
   display: grid;
-  grid-template-columns: 20px 3fr 2fr 50px;
+  grid-template-columns: 20px 3fr 2fr 50px 50px;
   align-items: center;
   cursor: pointer;
   padding: 8px 5px;
@@ -34,4 +34,8 @@
 
 .id {
   font-size: 20px;
+}
+
+.addRemoveBtn {
+  font-size: 16px;
 }

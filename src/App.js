@@ -12,13 +12,19 @@ const tracks = [
   {id: "2up35P", albumCover: "../assets/images/albmcvr.png", track: "YSM PC", artist: "OBLADAET, YASMI", album: "YSM PC", duration:"2:19"}
 ];
 
+const playlistTracksArr = [
+  {id: "2up3OP", albumCover: "../assets/images/albmcvr.png", track: "YSM PC", artist: "OBLADAET, YASMI", album: "YSM PC", duration:"2:19"}, 
+  {id: "2up33P", albumCover: "../assets/images/albmcvr.png", track: "YSM PC", artist: "OBLADAET, YASMI", album: "YSM PC", duration:"2:19"}, 
+  {id: "2up35P", albumCover: "../assets/images/albmcvr.png", track: "YSM PC", artist: "OBLADAET, YASMI", album: "YSM PC", duration:"2:19"}
+];
+
 
 function App() {
   const [ search, setSearch ] = useState('');
   const [ playlistVisibility, setPlaylistVisibility ] = useState(false);
   const [ playlistName, setPlaylistName ] = useState('');
   const [ searchResults, setSearchResults ] = useState(tracks);
-  const [ playlistTracks, setPlaylistTracks ] = useState(tracks);
+  const [ playlistTracks, setPlaylistTracks ] = useState(playlistTracksArr);
 
   const handleInput = (e) => {
     setSearch(e.target.value);
@@ -28,6 +34,18 @@ function App() {
     setPlaylistName(e.target.value);
   };
 
+  const handleAddToPlaylist = (track) => {
+    setPlaylistTracks((prev) => {
+      return [track, ...prev];
+    });
+  };
+
+  const handleRemoveFromPlaylist = (track) => {
+    setPlaylistTracks((prev) => {
+      return prev.filter(t => t.id !== track.id);
+    });
+  };
+
   return (
     <div className="App">
       <header>
@@ -35,10 +53,10 @@ function App() {
       </header>
       <SearchBar handleInput={handleInput} value={search}/>
       <div>{search}</div>
-      <SearchResults searchResults={searchResults} />
+      <SearchResults searchResults={searchResults} handleTrackAction={handleAddToPlaylist} />
       <OpenPlaylistBtn onClick={() => setPlaylistVisibility(true)} />
       {playlistVisibility && (
-      <Playlist onClose={() => setPlaylistVisibility(false)} handleInput={handlePlaylistName} value={playlistName} tracks={playlistTracks} />
+      <Playlist onClose={() => setPlaylistVisibility(false)} handleInput={handlePlaylistName} value={playlistName} tracks={playlistTracks} handleTrackAction={handleRemoveFromPlaylist} />
       )}
     </div>
   );

@@ -3,21 +3,22 @@ import Track from './Track';
 import Tracklist from './Tracklist';
 
 
-const SearchResults = ({ searchResults }) => {
+const SearchResults = ({ searchResults, handleTrackAction }) => {
   const trackItems = searchResults.map((track, index) => {
     return <Track 
               num={index + 1} 
-              albumCover={track.albumCover} 
-              track={track.track} 
-              artist={track.artist} 
-              album={track.album} 
-              duration={track.duration} 
-              id={track.id} />;
+              key={track.id} 
+              trackObj={track}
+              toRemove={false}
+              handleTrackAction={handleTrackAction} />;
   });
 
   return (
     <Tracklist>
-      {trackItems}
+      {trackItems.length !== 0 
+        ? trackItems
+        : <div>Songs not found :(</div>
+      }
     </Tracklist>
   );
 };
