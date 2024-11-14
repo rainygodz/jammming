@@ -3,7 +3,7 @@ import Track from './Track';
 import styles from '../styles/Playlist.module.css';
 import Tracklist from './Tracklist';
 
-const Playlist = ({ onClose, value, handleInput, tracks, handleTrackAction}) => {
+const Playlist = ({ onClose, value, handleInput, tracks, handleTrackAction, savePlaylist }) => {
 
   const trackItems = tracks.map((track, index) => {
     return <Track 
@@ -25,7 +25,7 @@ const Playlist = ({ onClose, value, handleInput, tracks, handleTrackAction}) => 
             : <div>The playlist is empty now, fill it up!</div>
           }
         </Tracklist>
-        <button className={styles.saveBtn}>Save to Spotify</button>
+        <button className={styles.saveBtn} onClick={savePlaylist} >Save to Spotify</button>
         <button className={styles.closeButton} onClick={onClose}>X</button>
       </div>
     </div>
