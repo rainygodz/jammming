@@ -4,6 +4,7 @@ import SearchResults from './components/SearchResults';
 import OpenPlaylistBtn from './components/OpenPlaylistBtn';
 import './App.css';
 import Playlist from './components/Playlist';
+import getAccessToken from './components/getAccessToken';
 
 
 const tracks = [
@@ -38,6 +39,10 @@ function App() {
     const newPlaylist = [];
     if (playlistTracks.length !== 0) {
       playlistTracks.forEach(track => newPlaylist.push(track.uri));
+      
+      getAccessToken()
+        .then((token) => console.log(token))
+        .catch((error) => console.log(error));
       
       setPlaylistTracks([]);
       setPlaylistName('');
