@@ -3,18 +3,33 @@ import styles from '../styles/Track.module.css';
 import trackCover from '../assets/images/albmcvr.png';
 
 const Track = ({ num, trackObj, handleTrackAction, toRemove }) => {
+
+  function convertMillisecondsToMinutes(milliseconds) {
+    const time = new Date(milliseconds);
+    const minutes = time.getMinutes();
+    let seconds = time.getSeconds();
+    if (seconds < 10) {
+      seconds = '0'+seconds;
+    }
+
+    const formattedTime = `${minutes}:${seconds}`;
+
+    return formattedTime;
+  }
+
+  const artists = [];
+  trackObj.artists.forEach(artist => artists.push(artist.name));
   
-  const albumCover = trackObj.albumCover;
-  const track = trackObj.track;
-  const artist = trackObj.artist;
-  const album = trackObj.album;
-  const duration = trackObj.duration;
+  const track = trackObj.name;
+  const artist = artists.join(', ');
+  const album = trackObj.album.name;
+  const duration = convertMillisecondsToMinutes(trackObj.duration_ms);
 
   return (
     <div className={styles.trackRow}>
         <div className={styles.id}>{num}</div>
         <div className={styles.trackInfo}>
-          <img className={styles.albumCover} src={trackCover} /> {/* поменять на albumCover когда буду тестить api*/}
+          {/* <img className={styles.albumCover} src={trackCover} /> поменять на albumCover когда буду тестить api */}
           <div>
             <div className={styles.trackName}>{track}</div>
             <div className={styles.artist}>{artist}</div>

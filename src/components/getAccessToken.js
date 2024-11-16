@@ -25,7 +25,7 @@ const getAccessToken = async () => {
 
   const data = await response.json();
 
-  return data.access_token;
+  return [data.access_token, data.expires_in];
 };
 
 

@@ -4,7 +4,11 @@ import Tracklist from './Tracklist';
 
 
 const SearchResults = ({ searchResults, handleTrackAction }) => {
-  const trackItems = searchResults.map((track, index) => {
+  if (searchResults.length === 0) {
+    return;
+  }
+  
+  let trackItems = searchResults.map((track, index) => {
     return <Track 
               num={index + 1} 
               key={track.id} 

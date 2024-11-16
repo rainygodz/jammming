@@ -5,24 +5,25 @@ import OpenPlaylistBtn from './components/OpenPlaylistBtn';
 import './App.css';
 import Playlist from './components/Playlist';
 import getAccessToken from './components/getAccessToken';
-
-
-const tracks = [
-  {id: "2up3OP", albumCover: "../assets/images/albmcvr.png", track: "YSM PC", artist: "OBLADAET, YASMI", album: "YSM PC", duration:"2:19", uri: "u1534"}, 
-  {id: "2up33P", albumCover: "../assets/images/albmcvr.png", track: "What you know bout love", artist: "POP SMOKE", album: "WYD", duration:"2:34", uri: "u1634"}, 
-  {id: "2up35P", albumCover: "../assets/images/albmcvr.png", track: "Базар", artist: "YASMI", album: "showbiz162", duration:"2:10", uri: "u1734"}
-];
+import searchTrack from './components/searchTrack';
 
 
 function App() {
   const [ search, setSearch ] = useState('');
   const [ playlistVisibility, setPlaylistVisibility ] = useState(false);
   const [ playlistName, setPlaylistName ] = useState('');
-  const [ searchResults, setSearchResults ] = useState(tracks);
+  const [ searchResults, setSearchResults ] = useState([]);
   const [ playlistTracks, setPlaylistTracks ] = useState([]);
 
   const handleInput = (e) => {
     setSearch(e.target.value);
+    searchTrack(search)
+      .then((result) => {
+        if (result !== undefined) {
+          setSearchResults(result);
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   const handlePlaylistName = (e) => {
@@ -41,7 +42,7 @@ function App() {
       playlistTracks.forEach(track => newPlaylist.push(track.uri));
       
       getAccessToken()
-        .then((token) => console.log(token))
+        .then((token, expiresIn) => console.log(token, expiresIn))
         .catch((error) => console.log(error));
       
       setPlaylistTracks([]);
@@ -68,7 +69,6 @@ function App() {
         <h1 className="logo">Jammming</h1>
       </header>
       <SearchBar handleInput={handleInput} value={search}/>
-      <div>{search}</div>
       <SearchResults searchResults={searchResults} handleTrackAction={handleAddToPlaylist} />
       <OpenPlaylistBtn onClick={() => setPlaylistVisibility(true)} />
       {playlistVisibility && (
