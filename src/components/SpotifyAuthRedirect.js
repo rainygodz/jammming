@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable */
+import { useEffect } from 'react';
 
 const SpotifyAuthRedirect = () => {
   const clientId = '9718534f663a406389566df1c61e678d'; // Замени на свой Client ID

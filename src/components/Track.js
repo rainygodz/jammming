@@ -1,6 +1,6 @@
+/* eslint-disable */
 import React from 'react';
 import styles from '../styles/Track.module.css';
-import trackCover from '../assets/images/albmcvr.png';
 
 const Track = ({ num, trackObj, handleTrackAction, toRemove }) => {
 
@@ -29,7 +29,6 @@ const Track = ({ num, trackObj, handleTrackAction, toRemove }) => {
     <div className={styles.trackRow}>
         <div className={styles.id}>{num}</div>
         <div className={styles.trackInfo}>
-          {/* <img className={styles.albumCover} src={trackCover} /> поменять на albumCover когда буду тестить api */}
           <div>
             <div className={styles.trackName}>{track}</div>
             <div className={styles.artist}>{artist}</div>
