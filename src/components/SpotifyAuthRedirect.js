@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 const SpotifyAuthRedirect = () => {
   const clientId = '9718534f663a406389566df1c61e678d'; // Замени на свой Client ID
-  const redirectUri = 'http://localhost:3000/#'; // Замени на свой Redirect URI
+  const redirectUri = 'https://effervescent-liger-1f85e0.netlify.app/'; // Замени на свой Redirect URI
   const clientSecret = '10d858a3e2154467bc66ad591b6af458';
 
   useEffect(() => {
